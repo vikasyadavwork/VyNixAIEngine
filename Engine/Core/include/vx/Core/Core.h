@@ -5,6 +5,7 @@
 // Common engine includes
 //==============================================================
 
+#include <vx/Core/Application.h>
 #include <vx/Core/Types.h>
 #include <vx/Core/Macros.h>
 #include <vx/Core/Platform.h>
