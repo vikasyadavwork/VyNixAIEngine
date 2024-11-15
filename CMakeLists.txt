@@ -38,6 +38,7 @@ option(VX_BUILD_SANDBOX "Build sandbox application" ON)
 
 add_subdirectory(Engine/Core)
 add_subdirectory(Engine/Memory)
+add_subdirectory(Engine/Platform)
 
 # ------------------------------------------------------------
 # Applications
