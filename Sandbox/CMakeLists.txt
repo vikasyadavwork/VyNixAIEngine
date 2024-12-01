@@ -5,4 +5,5 @@ add_executable(Sandbox
 target_link_libraries(Sandbox
     PRIVATE
         vx-core
+        vx-platform
 )
