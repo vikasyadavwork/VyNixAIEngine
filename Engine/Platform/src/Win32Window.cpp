@@ -1,5 +1,6 @@
 #include <vx/Platform/Windows/Win32Window.h>
 #include <vx/Core/Log.h>
+#include <iostream>
 
 namespace vx
 {
@@ -10,13 +11,16 @@ static LRESULT CALLBACK WindowProc(
     WPARAM wParam,
     LPARAM lParam)
 {
+    std::cout << "Message: " << message << std::endl;
     switch (message)
     {
     case WM_CLOSE:
+        VX_LOG_INFO("WM_CLOSE");
         DestroyWindow(hwnd);
         return 0;
 
     case WM_DESTROY:
+        VX_LOG_INFO("WM_DESTROY");
         PostQuitMessage(0);
         return 0;
     }
