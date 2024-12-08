@@ -17,7 +17,7 @@ target_sources(vx-core
         include/vx/Core/ILogSink.h
         include/vx/Core/Log.h
         include/vx/Core/Window.h
-)
+ "include/vx/Core/Event.h" "include/vx/Core/Events/WindowEvent.h" "include/vx/Core/Events/KeyEvent.h" "include/vx/Core/Events/MouseEvent.h")
 
 target_include_directories(vx-core
     PUBLIC
