@@ -4,6 +4,8 @@
 #include <string>
 
 #include <vx/Core/Types.h>
+#include <functional>
+#include "Events/WindowEvent.h"
 
 namespace vx
 {
@@ -19,9 +21,15 @@ namespace vx
     {
     public:
 
+        using EventCallbackFn = std::function<void(Event&)>;
+
         virtual ~Window() = default;
 
         virtual void OnUpdate() = 0;
+
+        virtual bool ShouldClose() const = 0;
+
+        virtual void SetEventCallback(EventCallbackFn callback) = 0;
 
         virtual uint32_t GetWidth() const = 0;
 
