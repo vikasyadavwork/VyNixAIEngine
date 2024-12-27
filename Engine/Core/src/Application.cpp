@@ -1,6 +1,6 @@
 #include <vx/Core/Application.h>
 #include <vx/Core/Log.h>
-#include <Windows.h>
+#include <vx/Core/Events/WindowEvent.h>
 
 namespace vx
 {
@@ -14,10 +14,18 @@ Application::~Application() = default;
 
 void Application::Run()
 {
-VX_LOG_INFO("VyNix AI Engine Started!");
-while (m_Running) {
-    ProcessMessages();
-}
+    VX_LOG_INFO("VyNix AI Engine Started!");
+
+    WindowCloseEvent event;
+    VX_LOG_INFO(event.GetName());
+
+    while (m_Running) {
+        m_Window->OnUpdate();
+
+        if (m_Window->ShouldClose()) {
+            Close();
+        }
+    }
 }
 
 void Application::Close()
@@ -28,18 +36,7 @@ void Application::Close()
 
 void Application::ProcessMessages()
 {
-    MSG msg{};
 
-    while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
-    {
-        if (msg.message == WM_QUIT) {
-            m_Running = false;
-            break;
-        }
-
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
-    }
 }
 
 } // namespace vx
