@@ -14,6 +14,8 @@ namespace vx
         ~Win32Window() override;
 
         void OnUpdate() override;
+        bool ShouldClose() const override;
+        void SetEventCallback(EventCallbackFn callback) override;
 
         uint32_t GetWidth() const override;
         uint32_t GetHeight() const override;
@@ -24,6 +26,8 @@ namespace vx
     private:
         WindowProps m_Props;
         HWND m_Handle = nullptr;
+        EventCallbackFn m_EventCallback;
+        bool m_ShouldClose = false;
     };
 
 }
