@@ -11,7 +11,7 @@ static LRESULT CALLBACK WindowProc(
     WPARAM wParam,
     LPARAM lParam)
 {
-    std::cout << "Message: " << message << std::endl;
+  //  std::cout << "Message: " << message << std::endl;
     switch (message)
     {
     case WM_CLOSE:
@@ -84,6 +84,26 @@ Win32Window::~Win32Window()
 
 void Win32Window::OnUpdate()
 {
+    MSG msg{};
+
+    while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
+    {
+        if (msg.message == WM_QUIT)
+            m_ShouldClose = true;
+
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
+}
+
+bool Win32Window::ShouldClose() const
+{
+    return m_ShouldClose;
+}
+
+void Win32Window::SetEventCallback(EventCallbackFn callback)
+{
+    m_EventCallback = std::move(callback);
 }
 
 uint32_t Win32Window::GetWidth() const
