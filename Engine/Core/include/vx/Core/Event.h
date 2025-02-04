@@ -8,6 +8,7 @@ enum class EventType
     // Window
     WindowClose,
     WindowResize,
+    WindowFocus,
 
     // Keyboard
     KeyPressed,
@@ -22,8 +23,9 @@ enum class EventType
 
 class Event
 {
-public:
+  public:
     virtual ~Event() = default;
+    bool Handled = false;
 
     virtual EventType GetEventType() const = 0;
 
