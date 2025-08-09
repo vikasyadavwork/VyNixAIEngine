@@ -1,0 +1,25 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "vynix-windows",
+      "displayName": "VyNix Windows x64",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "toolset": "v143,version=14.38.17.8",
+      "binaryDir": "${sourceDir}/out/build/vynix-release"
+    }
+  ],
+  "buildPresets": [
+    {"name": "vynix-release", "configurePreset": "vynix-windows", "configuration": "Release"},
+    {"name": "vynix-debug", "configurePreset": "vynix-windows", "configuration": "Debug"}
+  ],
+  "testPresets": [
+    {"name": "vynix-tests", "configurePreset": "vynix-windows", "configuration": "Release", "output": {"outputOnFailure": true}}
+  ]
+}
